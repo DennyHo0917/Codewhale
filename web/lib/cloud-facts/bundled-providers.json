@@ -591,6 +591,25 @@
       "tui_wire_tag": "antigravity",
       "wire_policy": "chat_completions"
     },
+    "api-route": {
+      "aliases": [
+        "apiroute"
+      ],
+      "api_key_env": "API_ROUTE_API_KEY",
+      "auth": {
+        "env_vars": [
+          "API_ROUTE_API_KEY"
+        ],
+        "secret_slot": "api-route"
+      },
+      "base_url": "https://global.api-route.com/v1",
+      "credential_url": "https://www.api-route.com/tokens",
+      "discovery": "models_endpoint",
+      "docs_url": "https://www.api-route.com/docs/overview",
+      "origin": "descriptor",
+      "wire": "openai-compatible",
+      "wire_policy": "openai-compatible"
+    },
     "arcee": {
       "aliases": [
         "arcee-ai",
