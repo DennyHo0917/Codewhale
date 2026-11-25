@@ -33,6 +33,7 @@ DeepSeek 仍是默认提供商，但 `ProviderKind::ALL` 中的每个条目都�
 | 腾讯 TokenHub | `https://tokenhub-intl.tencentcloudmaas.com/v1` | `hy4` | `TENCENT_API_KEY` |
 | WorldRouter | `https://inference-api.worldrouter.ai/v1` | `claude-sonnet-5-5`、`deepseek-v4-flash`、`gemini-4-neon` | `WORLDROUTER_API_KEY` |
 | TrustedRouter | `https://api.trustedrouter.com/v1` | `deepseek/deepseek-v4-flash`、`anthropic/claude-sonnet-4.5`；`trustedrouter/auto`（路由） | `TRUSTEDROUTER_API_KEY` |
+| API Route | `https://global.api-route.com/v1` | `claude-sonnet-4-6`、`deepseek-v4.1-flash`、`glm-5.3` | `API_ROUTE_API_KEY` |
 
 **内置提供商收录标准：** `provider_descriptors.json` 中的内置条目仅保留给 API 稳定、文档完善且有明确社区需求的成熟服务商。任何 OpenAI 兼容或 Anthropic 兼容端点都无需内置条目，可直接在 `config.toml` 中配置 `[providers.<name>]` 或在 `/provider` 中选择自定义立即使用。
 
@@ -51,6 +52,8 @@ Opper 是托管在欧盟的 OpenAI 兼容网关，一个密钥即可使用来自
 TrustedRouter 是 OpenAI 兼容网关，一个密钥即可使用来自多家实验室的模型。模型 ID 带厂商前缀，例如 `deepseek/deepseek-v4-flash`（默认）或 `anthropic/claude-sonnet-4.5`；`trustedrouter/auto` 会在多个模型之间路由每个请求。模型列表以公开的 `GET https://api.trustedrouter.com/v1/models` 为准。推理需要 `TRUSTEDROUTER_API_KEY`；公开列表请求成功并不代表密钥有效。
 
 WorldRouter 是 OpenAI 兼容网关，一个密钥即可使用 Claude、GPT、Gemini、DeepSeek、Kimi 和 GLM 等模型。模型 ID 不带前缀，例如 `claude-sonnet-5-5`、`deepseek-v4-flash`，模型列表和价格见 <https://www.worldrouter.ai/models>。以带密钥请求 `GET https://inference-api.worldrouter.ai/v1/models` 的结果为准，文档见 <https://www.worldrouter.ai/docs/quickstart>。
+
+API Route 是 OpenAI 兼容网关，一个密钥即可使用 Claude、GPT、Gemini、DeepSeek 和 GLM 等模型。模型 ID 不带前缀，例如 `claude-sonnet-4-6`、`deepseek-v4.1-flash`，模型列表和价格见 <https://www.api-route.com/pricing>。以带密钥请求 `GET https://global.api-route.com/v1/models` 的结果为准。在 <https://www.api-route.com/tokens> 创建密钥并设置 `API_ROUTE_API_KEY`，文档见 <https://www.api-route.com/docs/overview>。
 
 使用 `/provider tencent` 选择腾讯 TokenHub 国际端点，模型 ID 为 `hy4`，密钥环境变量为 `TENCENT_API_KEY`。腾讯文档给出的上下文为 1M，最大输入为 960K，最大输出为 64K，并支持图像、工具和推理。可用模型以认证后的 `/v1/models` 为准；若列表未提供限制信息，仍使用兼容路由的保守默认值，可将 `providers.tencent.model_context_windows.hy4` 显式设为 `1000000`，不影响同一网关上的其他模型。直连价格未经核验，不会套用 OpenRouter 的价格。OpenRouter 上的正式版 ID 是 `tencent/hy4`，支持 1,048,576 上下文、65,536 最大输出及 `none`、`low`、`high` 推理级别。预览版和现有 HY3 选择保持不变。文档见 <https://www.tencentcloud.com/document/product/1300/80695>。
 OpenCode Zen 和 OpenCode Go 是一等提供商路由，配置方式与下文其他提供商相同；它们不在上表之列。在 `/provider` 中，直接输入即可筛选列表（未绑定行操作的字母）；`Ctrl+T` 探测所选行的 `/models`，只记录可达性（2xx 并不代表模型可用）。

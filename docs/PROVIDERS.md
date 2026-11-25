@@ -70,6 +70,7 @@ against the vendor's own docs before trusting any value here:
 | LLMTR | `https://llmtr.com/v1` | `minimax/minimax-m3.1-flash`; namespaced `vendor/model` ids, from the live catalog | `LLMTR_API_KEY` |
 | WorldRouter | `https://inference-api.worldrouter.ai/v1` | `claude-sonnet-5-5`, `deepseek-v4-flash`, `gemini-4-neon` | `WORLDROUTER_API_KEY` |
 | TrustedRouter | `https://api.trustedrouter.com/v1` | `deepseek/deepseek-v4-flash`, `anthropic/claude-sonnet-4.5`; `trustedrouter/auto` (router) | `TRUSTEDROUTER_API_KEY` |
+| API Route | `https://global.api-route.com/v1` | `claude-sonnet-4-6`, `deepseek-v4.1-flash`, `glm-5.3` | `API_ROUTE_API_KEY` |
 
 **Bundled provider criteria:** Built-in rows in `provider_descriptors.json` are
 reserved for established operators with reliable APIs, public documentation,
@@ -182,6 +183,14 @@ request across models. The authority is the public
 `TRUSTEDROUTER_API_KEY`; a successful public listing does not verify the key.
 Create the key at [trustedrouter.com](https://trustedrouter.com/console/api-keys).
 Docs: <https://trustedrouter.com/docs>.
+
+API Route is an OpenAI-compatible gateway with Claude, GPT, Gemini, DeepSeek,
+GLM and other models behind one key. Model ids are unprefixed, such as
+`claude-sonnet-4-6` or `deepseek-v4.1-flash`, and the catalog with prices is at
+<https://www.api-route.com/pricing>. The authority is
+`GET https://global.api-route.com/v1/models` with your key.
+Create a key at <https://www.api-route.com/tokens> and set `API_ROUTE_API_KEY`.
+Docs: <https://www.api-route.com/docs/overview>.
 
 Tencent TokenHub is available as `/provider tencent` (aliases `tokenhub`,
 `tencent-tokenhub`, and `hunyuan`) on the existing Chat Completions transport.

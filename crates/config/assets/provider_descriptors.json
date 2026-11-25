@@ -3608,6 +3608,28 @@
         "aliases": {},
         "wire_slugs": {}
       }
+    },
+    {
+      "id": "api-route",
+      "label": "API Route",
+      "wire": "openai-compatible",
+      "base_url": "https://global.api-route.com/v1",
+      "api_key_env": "API_ROUTE_API_KEY",
+      "default_model": "claude-sonnet-4-6",
+      "discovery": "models_endpoint",
+      "docs_url": "https://www.api-route.com/docs/overview",
+      "credential_url": "https://www.api-route.com/tokens",
+      "guidance": "OpenAI-compatible gateway (Chat Completions + GET /v1/models with your key). Bare model ids such as claude-sonnet-4-6, deepseek-v4.1-flash or glm-5.3, as listed at api-route.com/pricing. Live /v1/models is the model authority. Store API_ROUTE_API_KEY, not a raw key.",
+      "aliases": [
+        "apiroute"
+      ],
+      "models": {
+        "ids": "catalog",
+        "accept": [],
+        "strip_prefixes": [],
+        "aliases": {},
+        "wire_slugs": {}
+      }
     }
   ],
   "constant_refs": {
